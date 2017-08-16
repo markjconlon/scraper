@@ -1,4 +1,5 @@
 require 'mechanize'
+require 'csv'
 
 agent = Mechanize.new{ |agent|
 agent.user_agent_alias = 'Mac Safari'
@@ -17,5 +18,8 @@ search_terms.each do |term|
   name = html_results.at_css('#firstHeading').text
   bday = html_results.at_css('.bday').text
   dday = html_results.at_css('.dday').text
-  puts "#{name} born #{bday}, died #{dday}"
+  # puts "#{name} born #{bday}, died #{dday}"
+  CSV.open('life_data.csv', 'a+') do |csv|
+    csv << [name, bday, dday]
+  end
 end
