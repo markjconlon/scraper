@@ -10,4 +10,7 @@ bday = html.at_css('.bday').text
 dday = html.at_css('.dday').text
 cause_of_death = html.at_xpath('//a[@title="Pancreatic cancer"]').text
 
-puts name,bday,dday,cause_of_death
+# puts name,bday,dday,cause_of_death
+
+output.write(name + ' was born on ' + bday + "\n")
+output.write( 'He died on ' + dday + 'do to ' + cause_of_death)
